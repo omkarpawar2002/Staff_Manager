@@ -1,0 +1,19 @@
+{% include 'base.html' %}
+
+{% block title %}
+<title>DELETE EMPLOYEE RECORDS</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="container" style="padding: 30px;">
+    <h1 style="text-align: center;">Employee Deleting Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        <h2>Employee Id :- {{obj.eid}} &nbsp;&nbsp;&nbsp; First Name :- {{obj.first_name}}</h2>
+        <button type="submit" class="btn btn-outline-light col-5">DELETE RECORD</button>
+        <a href=" {% url 'show_emp' %}"><button type="button" class="btn btn-outline-light col-5 float-end">CANCEL
+                RECORD</button></a>
+    </form>
+</div>
+{% endblock %}

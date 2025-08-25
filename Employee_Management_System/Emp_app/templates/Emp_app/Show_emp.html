@@ -1,0 +1,48 @@
+{% include 'base.html' %}
+
+{% block title %}
+<title>SHOW EMPLOYEE RECORDS</title>
+{% endblock %}
+
+{% block content %}
+<table class="table table-striped table-info">
+    <thead>
+        <tr>
+            <th>EMPLOYEE ID</th>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>CITY</th>
+            <th>GENDER</th>
+            <th>PHONE NO</th>
+            <th>ADDRESS</th>
+            <th>DEPT</th>
+            <th>EMAIL ID</th>
+            <th>PASSWORD</th>
+            <th>ELIGIBILITY</th>
+            <th>ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+        <tr>
+            <td>{{record.eid}}</td>
+            <td>{{record.first_name}}</td>
+            <td>{{record.last_name}}</td>
+            <td>{{record.city}}</td>
+            <td>{{record.gender}}</td>
+            <td>{{record.phone_no}}</td>
+            <td>{{record.address|truncatechars:10}}</td>
+            <td>{{record.dept}}</td>
+            <td>{{record.email_id}}</td>
+            <td>{{record.password}}</td>
+            <td>{{record.eligible}}</td>
+            <td>
+                <a href="{% url 'update_emp' record.eid  %}"><button class="btn btn-dark me-2">UPDATE</button></a>
+                <a href="{% url 'delete_emp' record.eid %}"><button
+                        class="btn btn-dark me-2 float-end">DELETE</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
